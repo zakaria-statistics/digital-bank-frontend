@@ -1,0 +1,37 @@
+<div class="container mt-2">
+  <div class="card">
+    <div class="card-header">Customer</div>
+    <div class="mb-2 mt-2 ms-2">
+      <label>Customer ID :</label>
+      <label><strong>{{customer.id}}</strong></label>
+    </div>
+    <div class="mb-2 ms-2">
+      <label>Balance :</label>
+      <label><strong>{{customer.name}}</strong></label>
+    </div>
+    <div class="mb-2 ms-2">
+      <label>Email :</label>
+      <label><strong>{{customer.email}}</strong></label>
+    </div>
+    <div class="card-header">Accounts</div>
+    <div class="card-body" *ngIf="customerAccounts">
+      <table class="table">
+        <thead>
+          <th>ID</th><th>Balance</th><th>Type</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of customerAccounts">
+            <td>{{b.id}}</td>
+            <td>{{b.balance}}</td>
+            <td>{{b.type}}</td>
+            <td>
+              <button (click)="handleCustomerAccounts(b)" class="btn btn-success">
+                Operations
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

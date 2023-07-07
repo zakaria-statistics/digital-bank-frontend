@@ -1,0 +1,51 @@
+<div class="container mb-2 mt-2">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Account ID</div>
+        <div class="card-body">
+          <div class="mb-2">
+            <label>Account ID :</label>
+            <label><strong>{{accountId}}</strong></label>
+          </div>
+          <div class="mb-2">
+            <label>Balance :</label>
+            <label><strong>{{account.balance}}</strong></label>
+          </div>
+          <div class="mb-2">
+            <label>Type :</label>
+            <label><strong>{{account.type}}</strong></label>
+          </div>
+        </div>
+        <ng-container *ngIf="accountObservable">
+          <table class="table ms-2">
+            <thead>
+            <th>ID</th><th>operationDate</th><th>Type</th><th>Amount</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let op of accountObservable.accountOperationDTOS">
+              <td>{{op.id}}</td>
+              <td>{{op.operationDate}}</td>
+              <td>{{op.type}}</td>
+              <td>{{op.amount}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <ul class="nav nav-pills">
+            <li *ngFor="let item of [].constructor(accountObservable.totalPages); let page=index">
+              <button [ngClass]="page==currentPage?'btn-info':'btn-outline-info'"
+              class="btn mt-1 ms-1" (click)="goToPage(page)">{{page+1}}</button>
+            </li>
+          </ul>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Operations</div>
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
